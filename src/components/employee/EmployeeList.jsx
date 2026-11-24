@@ -15,9 +15,7 @@ import {
   IconMail,
 } from '../common/Icons';
 import AddEmployeeModal from './AddEmployeeModal';
-
-const API_BASE_URL =
-  process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+import { API_BASE_URL } from '../../services/authService';
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
@@ -169,7 +167,7 @@ const EmployeeList = () => {
       setEditError("");
 
       const response = await fetch(
-        `http://localhost:5000/api/employees/edit/${editingEmployee._id}`,
+        `${API_BASE_URL}/employees/edit/${editingEmployee._id}`,
         {
           method: "PUT",
           headers: {
@@ -228,7 +226,7 @@ const EmployeeList = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/employees/delete/${deleteId}`,
+        `${API_BASE_URL}/employees/delete/${deleteId}`,
         {
           method: "DELETE",
           headers: {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { API_BASE_URL } from '../../services/authService';
 import {
   IconX,
   IconUser,
@@ -66,7 +67,7 @@ const AddEmployeeModal = ({ isOpen, onClose, onAddEmployee }) => {
       setLoading(true);
 
       const response = await fetch(
-        'http://localhost:5000/api/employees/register',
+        `${API_BASE_URL}/employees/register`,
         {
           method: 'POST',
           headers: {
